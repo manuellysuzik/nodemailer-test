@@ -1,0 +1,13 @@
+version: '3'
+
+services:
+  mailhog:
+    image: mailhog/mailhog
+    ports: 
+      - 1025:1025
+      - 8025:8025
+  app:
+    build: .
+    command: node index.js
+    environment: 
+      - MAILHOG_HOST=mailhog
